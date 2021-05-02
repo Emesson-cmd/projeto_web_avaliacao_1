@@ -3,11 +3,103 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+function criarParcelas1(){
+  var nome_cliente = document.getElementById("first_name").value + " " + document.getElementById("last_name").value;
+  var numero = parseInt(document.getElementById("id_produto").value);
+  var nome_produto = "";
+  var valor = 0;
+  var qtde_parcelas = document.getElementById("qtde_parcelas").value;
+  var pcr_acrescimo = 0;
+
+  if (qtde_parcelas == 0 ) {
+
+  } else {
+    if (qtde_parcelas >= 1 && qtde_parcelas <= 3) {
+      pcr_acrescimo = 0.05;
+    } else {
+      pcr_acrescimo = 0.12;
+    }
+  }
+  
+
+  switch (numero){
+    case 1:
+      nome_produto = "Air Fryer Mondial";
+      valor = 329.99;
+      break;
+    case 2:
+      nome_produto = "Refrigerador LG Smart French Door";
+      valor = 19139.00;
+      break;
+    case 3:
+
+      break;
+    case 4:
+
+      break;
+    case 5:
+
+      break;
+    case 6:
+
+      break;
+  }
+
+
+
+    var i = 0;
+    var parcelas = "==================================" + "<br>" + "<br>" +
+    "LOJA DE ELETRODOMÉSTICOS" + "<br>" + "<br>" + 
+    "CLIENTE: " + nome_cliente + "<br>" +
+    "PRODUTO: "+ nome_produto + "<br>" +
+    "VALOR DO PRODUTO: " + valor + "<br>" +
+    "QUANTIDADE DE PARCELAS: "+ qtde_parcelas + "<br>" +
+    "PORCENTAGEM DE ACRESCIMO: "+ pcr_acrescimo + "<br>" +
+    "VALOR DO ACRESCIMO: "+ (pcr_acrescimo * valor) + "<br>" + 
+    "VALOR TOTAL: " + ((pcr_acrescimo * valor) + valor) + "<br>" + "<br>" +
+    "PARCELA: " + i + "/06" + "<br>" + "<br>" +
+    "==================================";
+
+    document.getElementById('criacaoParcelas').innerHTML = parcelas;
+}
+
+function calcularNota(){
+  var nomeAluno = document.getElementById("first_name").value + " " + document.getElementById("last_name").value;
+  var nomeDisciplina = document.getElementById("nome_disciplina").value;
+  var nota1 = parseFloat(document.getElementById("nota1").value);
+  var nota2 = parseFloat(document.getElementById("nota2").value);
+  if (nota1 < 0 || nota1 > 10 || nota2 < 0 || nota2 > 10){
+    alert("O valor não de nota 1 e/ou nota 2 não está correto! Insira um valor de 0 a 10");
+  } else {
+    var media = (nota1 + nota2) / 2;
+
+    if(media >= 7){
+      if(media == 10){
+        alert("Uau, " + nomeAluno + ". Você está aprovado com nota maxima na disciplina de " + nomeDisciplina);
+      } else {
+        alert("Parabéns, " + nomeAluno + ", você foi aprovado com média " + media + " na disciplina de " + nomeDisciplina);
+      }
+    } else  {
+      if (media > 3 ) {
+        alert("Infelizmente, " + nomeAluno + ", você está de recuperação com média " + media + " na disciplina de " + nomeDisciplina);
+      } else {
+        alert("Sinto muito, " + nomeAluno + ". Você está reprovado com média " + media + " na disciplina de " + nomeDisciplina);
+      }
+    }
+  }
+}
+
+$(document).ready(function(){
+  $('select').formSelect();
+});
+
+$(document).ready(function() {
+  $('input#input_text, textarea#textarea2').characterCounter();
+});
 
 $(document).ready(function(){
   $('.modal').modal();
   $('.dropdown-trigger').dropdown();
-  
 });
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
