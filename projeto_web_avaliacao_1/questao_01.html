@@ -18,10 +18,10 @@
         <nav class="navbar-fixed">
             <div class="nav-wrapper deep-orange">
                 <!--LOGO-->
-                <a href="#" class="padding-de-left brand-logo"><img src="img/logo_size.jpg" width="65px" height="65px"
-                        alt="Logo_marca"></a>
+                <a href="index.html" class="padding-de-left brand-logo"><img src="img/logo_size.jpg" width="65px"
+                        height="65px" alt="Logo_marca"></a>
                 <!--Icone para abrir no mobile-->
-                <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
+                <a href="#" data-target="mobile-navbar" class="sidenav-trigger dropdown-trigger">
                     <i class="material-icons">menu</i>
                 </a>
                 <ul id="navbar-items" class="right hide-on-med-and-down">
@@ -42,6 +42,12 @@
                     <li><a href="questao_03.html" target="_blank">Questão 3</a></li>
                     <li><a href="questao_04.html" target="_blank">Questão 4</a></li>
                 </u>
+                <u id="mobile-navbar" class="dropdown-content">
+                    <li><a href="questao_01.html" target="_blank">Questão 1</a></li>
+                    <li><a href="questao_02.html" target="_blank">Questão 2</a></li>
+                    <li><a href="questao_03.html" target="_blank">Questão 3</a></li>
+                    <li><a href="questao_04.html" target="_blank">Questão 4</a></li>
+                </u>
             </div>
         </nav>
     </div>
@@ -51,28 +57,28 @@
             <h1 style="text-align: center;">CALCULAR MÉDIA</h1>
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Nome do aluno" id="first_name" type="text" class="validate">
+                    <input placeholder="Nome do aluno" id="first_name" type="text" class="validate" required>
                     <label for="first_name">Primeiro nome</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate">
+                    <input id="last_name" type="text" class="validate" required>
                     <label for="last_name">Último nome</label>
                 </div>
             </div>
             <div class="row">
                 <div name="nota1" class="input-field col s6">
-                    <input id="nota1" type="number">
+                    <input id="nota1" type="number" required>
                     <label for="nota1">Nota 1</label>
                 </div>
                 <div name="nota2" class="input-field col s6">
-                    <input id="nota2" type="number">
+                    <input id="nota2" type="number" required>
                     <label for="nota2">Nota 2</label>
                 </div>
 
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
+                    <input id="email" type="email" class="validate" required>
                     <label for="email">Email</label>
                 </div>
                 <div class="input-field col s12">
@@ -83,18 +89,19 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <select id="nome_disciplina">
+                    <select id="nome_disciplina" required>
                         <option value="" disabled selected>Selecione a disciplina</option>
                         <option value="Análise e desenvolvimento de software">Análise e desenvolvimento de software
                         </option>
                         <option value="Desenvolvimento web">Desenvolvimento web</option>
                         <option value="Banco de dados II">Banco de dados II</option>
                         <option value="Interação humano-computador">Interação humano-computador</option>
-                        <option value="Sistema de informações gerenciai">Sistema de informações gerenciais</option>
+                        <option value="Sistema de informações gerenciais">Sistema de informações gerenciais</option>
                     </select>
                 </div>
             </div>
             <input type="submit" onclick="calcularNota()" value="Calcular nota">
+            <button type="reset">Resetar</button>
         </form>
     </div>
 

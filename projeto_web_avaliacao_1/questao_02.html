@@ -18,10 +18,10 @@
         <nav class="navbar-fixed">
             <div class="nav-wrapper deep-orange">
                 <!--LOGO-->
-                <a href="#" class="padding-de-left brand-logo"><img src="img/logo_size.jpg" width="65px" height="65px"
-                        alt="Logo_marca"></a>
+                <a href="index.html" class="padding-de-left brand-logo"><img src="img/logo_size.jpg" width="65px"
+                        height="65px" alt="Logo_marca"></a>
                 <!--Icone para abrir no mobile-->
-                <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
+                <a href="#" data-target="mobile-navbar" class="sidenav-trigger dropdown-trigger">
                     <i class="material-icons">menu</i>
                 </a>
                 <ul id="navbar-items" class="right hide-on-med-and-down">
@@ -42,6 +42,12 @@
                     <li><a href="questao_03.html" target="_blank">Questão 3</a></li>
                     <li><a href="questao_04.html" target="_blank">Questão 4</a></li>
                 </u>
+                <u id="mobile-navbar" class="dropdown-content">
+                    <li><a href="questao_01.html" target="_blank">Questão 1</a></li>
+                    <li><a href="questao_02.html" target="_blank">Questão 2</a></li>
+                    <li><a href="questao_03.html" target="_blank">Questão 3</a></li>
+                    <li><a href="questao_04.html" target="_blank">Questão 4</a></li>
+                </u>
             </div>
         </nav>
     </div>
@@ -51,17 +57,17 @@
             <h1 style="text-align: center;">CARNÊ DE PAGAMENTO</h1>
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Nome do cliente" id="first_name" type="text" class="validate">
+                    <input placeholder="Nome do cliente" id="first_name" type="text" class="validate" required>
                     <label for="first_name">Primeiro nome</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate">
+                    <input id="last_name" type="text" class="validate" required>
                     <label for="last_name">Último nome</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <select id="id_produto">
+                    <select id="id_produto" required>
                         <option value="" disabled selected>Selecione o produto</option>
                         <option value="1">Air Fryer Mondial - R$ 329,99</option>
                         <option value="2">Refrigerador LG Smart French Door - R$ 19.139,00</option>
@@ -76,7 +82,7 @@
                     <label for="qtde_itens">Quantidade de itens</label>
                 </div>
                 <div class="input-field col s3">
-                    <select id="qtde_parcelas">
+                    <select id="qtde_parcelas" required>
                         <option value="" disabled selected>Selecione a qtde de parcelas</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -87,7 +93,7 @@
                     </select>
                 </div>
             </div>
-            <input type="reset" onclick="limparTela()" value="Resetar">
+            <input type="reset" onclick="limparTelaCarne()" value="Resetar">
         </form>
         <input type="submit" onclick="criarParcelas1()" value="Gerar carnê">
     </div>

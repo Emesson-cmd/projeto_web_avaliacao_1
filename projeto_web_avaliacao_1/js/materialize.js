@@ -98,13 +98,13 @@ function calcular_salario(){
     pcr_desconto_inss_un = "12%";
   }
   else {
-    alert("Seu novo salário é " + novo_salario);
   }
 
   var desconto_inss = Math.round((novo_salario * pcr_desconto_inss) * 10) / 10;
   var salario_liquido = novo_salario - desconto_inss;
 
-  document.getElementById("mostrar_informacoes").innerHTML = "<p style=\"text-align:center\">" +
+  document.getElementById("mostrar_informacoes").innerHTML = 
+  "<p style=\"text-align:center\">" +
   "--------------------Contra cheque--------------------" + "<br>" + "<br>" +
 
   "FUNCIONÁRIO: " + nome_funcionário + "<br>" +
@@ -120,12 +120,12 @@ function calcular_salario(){
   "</p>";
 }
 
-function limparTela(){
+function limparTelaCarne(){
   document.getElementById('criacaoParcelas').innerHTML = "";
 }
 
 function criarParcelas1(){
-  limparTela();
+  limparTelaCarne();
 
   var nome_cliente = document.getElementById("first_name").value + " " + document.getElementById("last_name").value;
   var numero = parseInt(document.getElementById("id_produto").value);
@@ -137,8 +137,6 @@ function criarParcelas1(){
 
   var pcr_acrescimo = 0;
   var pcr_acrescimo_un = '';
-
-
 
   if (qtde_parcelas == 0 ) {
     alert("Valor incorreto para quantidade de parcelas!");
@@ -186,6 +184,7 @@ function criarParcelas1(){
   for (var i = 1; i <= qtde_parcelas; i++){
       var parcelas = "<br>" +
       "LOJA DE ELETRODOMÉSTICOS" + "<br>" + "<br>" + 
+
       "CLIENTE: " + nome_cliente + "<br>" +
       "PRODUTO: "+ nome_produto + "<br>" +
       "VALOR UNITÁRIO DO PRODUTO: " + "R$ " + valor + "<br>" +
@@ -194,9 +193,11 @@ function criarParcelas1(){
       "PORCENTAGEM DE ACRESCIMO: " + pcr_acrescimo_un + "<br>" +
       "VALOR DO ACRESCIMO: "+ "R$ " + Math.round((valor_acrescimo) * 10) / 10 + "<br>" + 
       "VALOR À SE PAGAR: "+ "R$ "  + Math.round((valor_total) * 10) / 10 + "<br>" + "<br>" +
+
       "QUANTIDADE DE PARCELAS: " + qtde_parcelas + "<br>" +
       "VALOR DE CADA PARCELA: " + "R$ " + Math.round(valor_total / qtde_parcelas * 10) / 10 + "<br>" +
       "PARCELA: " + i + "/" + qtde_parcelas + "<br>" + "<br>" +
+      
       "<hr>" + "<br>";
 
       document.getElementById('criacaoParcelas').innerHTML += parcelas;
