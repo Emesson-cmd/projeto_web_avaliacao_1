@@ -3,25 +3,105 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+function calcular_salario(){
+  var nome_funcionário = document.getElementById("first_name").value;
+  var salario_atual = parseFloat(document.getElementById("salario").value);
+  var id_cargo = parseInt(document.getElementById("id_cargo").value);
+  var nome_cargo = "";
+  var pcr_aumento = 0;
+  var pcr_aumento_un = "%";
+  var pcr_desconto_inss = 0;
+  var pcr_desconto_inss_un = "%";
+
+  var novo_salario = 0;
+
+  switch (id_cargo) {
+    case 1:
+      nome_cargo = "Atendente";
+      pcr_aumento = 0.08;
+      pcr_aumento_un = "8%";
+      break;
+    case 2:
+      nome_cargo = "Estoquista";
+      pcr_aumento = 0.06;
+      pcr_aumento_un = "6%";
+      break;
+    case 3:
+      nome_cargo = "Gerente";
+      pcr_aumento = 0.03;
+      pcr_aumento_un = "3%";
+      break;
+  }
+
+  novo_salario = (salario_atual * pcr_aumento) + salario_atual;
+
+  if (novo_salario <= 1045) {
+    pcr_desconto_inss = 0.075;
+    pcr_desconto_inss_un = "7.5%";
+  }
+  else if(novo_salario <= 2089){
+    pcr_desconto_inss = 0.09;
+    pcr_desconto_inss_un = "9%";
+  }
+  else if (novo_salario <= 3134.40){
+    pcr_desconto_inss = 0.12;
+    pcr_desconto_inss_un = "12%";
+  }
+  else {
+    alert("Seu novo salário é " + novo_salario);
+  }
+
+  var desconto_inss = Math.round((novo_salario * pcr_desconto_inss) * 10) / 10;
+  var salario_liquido = novo_salario - desconto_inss;
+
+  document.getElementById("mostrar_informacoes").innerHTML = "<p style=\"text-align:center\">" +
+  "--------------------Contra cheque--------------------" + "<br>" + "<br>" +
+
+  "FUNCIONÁRIO: " + nome_funcionário + "<br>" +
+  "CARGO: " + nome_cargo + "<br>" + "<br>" +
+
+  "SALÁRIO ATUAL: " + "R$ " + salario_atual + "<br>" +
+  "NOVO SALÁRIO: " + "R$ " + salario_atual + " + " + pcr_aumento_un + " = " + "R$ " + novo_salario + "<br>" +
+  "DESCONTO INSS: " + desconto_inss + "% (" + pcr_desconto_inss_un + ")" + "<br>" + "<br>" +
+
+  "SALÁRIO LÍQUIDO: " + salario_liquido + "<br>" + "<br>" +/**/
+
+  "--------------------------------------------------------" +
+  "</p>";
+}
+
+function limparTela(){
+  document.getElementById('criacaoParcelas').innerHTML = "";
+}
+
 function criarParcelas1(){
+  limparTela();
+
   var nome_cliente = document.getElementById("first_name").value + " " + document.getElementById("last_name").value;
   var numero = parseInt(document.getElementById("id_produto").value);
-  var nome_produto = "";
-  var valor = 0;
+  var qtde_produto = parseInt(document.getElementById("qtde_itens").value);
   var qtde_parcelas = document.getElementById("qtde_parcelas").value;
+
+  var nome_produto = "Não selecionado";
+  var valor = 0;
+
   var pcr_acrescimo = 0;
+  var pcr_acrescimo_un = '';
+
+
 
   if (qtde_parcelas == 0 ) {
-
+    alert("Valor incorreto para quantidade de parcelas!");
   } else {
     if (qtde_parcelas >= 1 && qtde_parcelas <= 3) {
       pcr_acrescimo = 0.05;
+      pcr_acrescimo_un = '5%';
     } else {
       pcr_acrescimo = 0.12;
+      pcr_acrescimo_un = '12%';
     }
   }
   
-
   switch (numero){
     case 1:
       nome_produto = "Air Fryer Mondial";
@@ -32,35 +112,46 @@ function criarParcelas1(){
       valor = 19139.00;
       break;
     case 3:
-
+      nome_produto ="Forno Elétrico de Bancada";
+      valor =319;
       break;
     case 4:
-
+      nome_produto ="Micro-ondas Electrolux";
+      valor = 455;
       break;
     case 5:
-
+      nome_produto ="Lavadoura de Roupas Consul";
+      valor =1529;
       break;
     case 6:
-
+      nome_produto ="Sanduicheira Mondial";
+      valor =119.9;
       break;
   }
 
+  var valor_soma_itens = qtde_produto * valor;
+  var valor_acrescimo = pcr_acrescimo * valor_soma_itens;
+  var valor_total = valor_acrescimo + valor_soma_itens;
 
+  for (var i = 1; i <= qtde_parcelas; i++){
+      var parcelas = "<br>" +
+      "LOJA DE ELETRODOMÉSTICOS" + "<br>" + "<br>" + 
+      "CLIENTE: " + nome_cliente + "<br>" +
+      "PRODUTO: "+ nome_produto + "<br>" +
+      "VALOR UNITÁRIO DO PRODUTO: " + "R$ " + valor + "<br>" +
+      "QUANTIDADE DO PRODUTO: " + qtde_produto + "<br>" +
+      "VALOR TOTAL DA COMPRA: " + "R$ " + valor_soma_itens + "<br>" +
+      "PORCENTAGEM DE ACRESCIMO: " + pcr_acrescimo_un + "<br>" +
+      "VALOR DO ACRESCIMO: "+ "R$ " + Math.round((valor_acrescimo) * 10) / 10 + "<br>" + 
+      "VALOR À SE PAGAR: "+ "R$ "  + Math.round((valor_total) * 10) / 10 + "<br>" + "<br>" +
+      "QUANTIDADE DE PARCELAS: " + qtde_parcelas + "<br>" +
+      "VALOR DE CADA PARCELA: " + "R$ " + Math.round(valor_total / qtde_parcelas * 10) / 10 + "<br>" +
+      "PARCELA: " + i + "/" + qtde_parcelas + "<br>" + "<br>" +
+      "<hr>" + "<br>";
 
-    var i = 0;
-    var parcelas = "==================================" + "<br>" + "<br>" +
-    "LOJA DE ELETRODOMÉSTICOS" + "<br>" + "<br>" + 
-    "CLIENTE: " + nome_cliente + "<br>" +
-    "PRODUTO: "+ nome_produto + "<br>" +
-    "VALOR DO PRODUTO: " + valor + "<br>" +
-    "QUANTIDADE DE PARCELAS: "+ qtde_parcelas + "<br>" +
-    "PORCENTAGEM DE ACRESCIMO: "+ pcr_acrescimo + "<br>" +
-    "VALOR DO ACRESCIMO: "+ (pcr_acrescimo * valor) + "<br>" + 
-    "VALOR TOTAL: " + ((pcr_acrescimo * valor) + valor) + "<br>" + "<br>" +
-    "PARCELA: " + i + "/06" + "<br>" + "<br>" +
-    "==================================";
+      document.getElementById('criacaoParcelas').innerHTML += parcelas;
 
-    document.getElementById('criacaoParcelas').innerHTML = parcelas;
+  }
 }
 
 function calcularNota(){

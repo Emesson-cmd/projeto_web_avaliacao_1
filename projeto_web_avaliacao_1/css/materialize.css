@@ -3,6 +3,14 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+.espacamento_esquerda_direita {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+ 
+h1 {
+  text-align: center;;
+}
 
 h4, ul {
   text-align: center;

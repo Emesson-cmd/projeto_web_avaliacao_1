@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questão 01</title>
+    <title>Questão 03</title>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- IMPORT BOOSTRAP-->
     <link rel="shortcut icon" href="favicon-32x32.png" type="image/x-icon">
 </head>
 
@@ -46,57 +48,87 @@
         </nav>
     </div>
 
-    <div class="row">
-        <form class="col s12">
-            <h1 style="text-align: center;">CALCULAR MÉDIA</h1>
-            <div class="row">
-                <div class="input-field col s6">
-                    <input placeholder="Nome do aluno" id="first_name" type="text" class="validate">
-                    <label for="first_name">Primeiro nome</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate">
-                    <label for="last_name">Último nome</label>
-                </div>
+    <h1>GERAR CONTRA CHEQUE</h1>
+    <div>
+        <div class="row">
+            <div class="col-6">
+              <h5 style="text-align: center;">PLANO CARGOS E CARREIRA</h5>
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">CARGO</th>
+                    <th scope="col">AUMENTO (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>ATENDENTE</td>
+                    <td>8</td>
+                  </tr>
+                  <tr>
+                    <td>ESTOQUISTA</td>
+                    <td>6</td>
+                  </tr>
+                  <tr>
+                    <td>GERENTE</td>
+                    <td>3</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="row">
-                <div name="nota1" class="input-field col s6">
-                    <input id="nota1" type="number">
-                    <label for="nota1">Nota 1</label>
-                </div>
-                <div name="nota2" class="input-field col s6">
-                    <input id="nota2" type="number">
-                    <label for="nota2">Nota 2</label>
-                </div>
-
+            
+            <div class="col-6">
+              <h5 style="text-align: center;">CONTRIUBUIÇÃO INSS 2020</h5>
+              <table class="table table-sm">  
+                <thead>
+                  <tr>
+                    <th scope="col">SAlÁRIO BASE</th>
+                    <th scope="col">ALIQUOTA INSS (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>até R$ 1.045,00</td>
+                    <td>7,5</td>
+                  </tr>
+                  <tr>
+                    <td>de R$ 1.045,01 até R$ 2.089,60</td>
+                    <td>9</td>
+                  </tr>
+                  <tr>
+                    <td>de R$ 2.089,61 até R$ 3.134,40</td>
+                    <td>12</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
-                    <label for="email">Email</label>
-                </div>
-                <div class="input-field col s12">
-
-                </div>
-
-            </div>
-
-            <div class="row">
-                <div class="input-field col s12">
-                    <select id="nome_disciplina">
-                        <option value="" disabled selected>Selecione a disciplina</option>
-                        <option value="Análise e desenvolvimento de software">Análise e desenvolvimento de software
-                        </option>
-                        <option value="Desenvolvimento web">Desenvolvimento web</option>
-                        <option value="Banco de dados II">Banco de dados II</option>
-                        <option value="Interação humano-computador">Interação humano-computador</option>
-                        <option value="Sistema de informações gerenciai">Sistema de informações gerenciais</option>
-                    </select>
-                </div>
-            </div>
-            <input type="submit" onclick="calcularNota()" value="Calcular nota">
-        </form>
+          </div>
+          <hr>
     </div>
+
+    <div class="row espacamento_esquerda_direita">
+        <div class="input-field col s4">
+            <input placeholder="Insira seu nome completo" id="first_name" type="text" class="validate">
+            <label for="first_name">Nome do funcionário</label>
+        </div>
+        <div class="input-field col s4">
+            <input placeholder="Insira salário" id="salario" type="number" class="validate">
+            <label for="salario">Valor do salário</label>
+        </div>
+        <div class="input-field col s4">
+            <select name="cargo" id="id_cargo">
+                <option value="" disabled selected>Selecionar cargo</option>
+                <option value="1">Atendente</option>
+                <option value="2">Estoquista</option>
+                <option value="3">Gerente</option>
+            </select>
+        </div>
+    </div>
+    <button onclick="calcular_salario()" id="calcular_salario" class="espacamento_esquerda_direita">Calcular salário</button>
+
+    <section id="mostrar_informacoes">
+
+    </section>
 
     <footer class="page-footer deep-orange">
         <div class="container">
