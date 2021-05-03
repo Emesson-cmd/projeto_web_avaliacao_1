@@ -3,6 +3,56 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+function calcular_imc(){
+  var nome_paciente = document.getElementById("id_nome").value;
+  var peso = parseFloat(document.getElementById("id_peso").value);
+  var altura = parseFloat(document.getElementById("id_altura").value);
+  var imc = Math.round(peso / (altura * altura) * 100) / 100;
+  var clas_obesidade = "";
+  var prob_saude = "";
+
+  if (imc < 18.5) {
+    clas_obesidade = "Baixo peso";
+    prob_saude = "Peso baixo para altura. Maior probabilidade de anorexia.";
+  }
+  else if (imc >= 18.5 && imc <= 24.9) {
+    clas_obesidade = "Peso normal";
+    prob_saude = "Maior probabilidade de ser um indivíduo saudável.";
+  }
+  else if (imc >= 25 && imc <= 29.9) {
+    clas_obesidade = "Pré-obesidade";
+    prob_saude = "Alguma probabilidade de problemas de saúde. Predisposição a tornar-se obeso.";
+  }
+  else if (imc >= 30 && imc <= 34.9) {
+    clas_obesidade = "Obesidade grau I";
+    prob_saude = "Risco moderado de diabetes tipo II, hipertensão, colesterol, cardiopatia.";
+  }
+  else if (imc >= 35 && imc <= 39.9) {
+    clas_obesidade = "Obesidade grau II";
+    prob_saude = "Risco grave. Aumenta o risco das doenças associadas. O risco de mortalidade aumenta 50%.";
+  }
+  else if (imc >= 40) {
+    clas_obesidade = "Obesidade grau III ou obesidade môrbida";
+    prob_saude = "Risco muito grave. O risco de doenças associadas assim como a mortalidade aumenta 90%.";
+  }
+
+  document.getElementById("mostrar_resultado").innerHTML = 
+    "<p style=\"text-align: center\">" +
+    "-----------------------------------------------------" + "<br>" +
+
+    "RESULTADO - IMC" + "<br>" + "<br>" +
+
+    "PACIENTE: " + nome_paciente + "<br>" +
+    "PESO: " + peso + " Kg" + "<br>" +
+    "ALTURA: " + altura + "<br>" +
+    "IMC: " + imc + "<br>" + "<br>" +
+
+    "Olá, " + nome_paciente + ". Seu nível de obesidade é " + clas_obesidade + "<br>" +
+    "Em relação à problemas de saúde: " + prob_saude + "<br>" +/**/
+
+    "-----------------------------------------------------" + "</p>";
+}
+
 function calcular_salario(){
   var nome_funcionário = document.getElementById("first_name").value;
   var salario_atual = parseFloat(document.getElementById("salario").value);
